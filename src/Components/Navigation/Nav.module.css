@@ -1,0 +1,15 @@
+.Nav {
+  background-color: #5d8aa8;
+  grid-area:nav;
+  box-shadow: 0px 5px 5px grey;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  }
+  .Nav .Logo {
+  padding: 10px;
+  }
+  .Nav .Logo img {
+    max-height: 100px;
+    max-width: 100px;
+  }

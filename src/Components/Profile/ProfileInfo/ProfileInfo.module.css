@@ -1,0 +1,25 @@
+
+  .Profile {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .Profile .Avatar img {
+    width: 200px;
+    height: 200px;
+    border-radius: 30px;
+  }
+
+  .Profile .Questionnaire ul {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .Profile .Questionnaire ul li {
+    display: flex;
+    flex-direction:row;
+  }
+
+  .Profile .Questionnaire ul li p:first-child {
+    font-weight: bold;
+  }

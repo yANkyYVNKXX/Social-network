@@ -1,0 +1,25 @@
+.Menu {
+  grid-area:navleft;
+  background-color: #5d8aa8;
+  box-shadow: 5px 0px 5px grey;
+  font-family: Montserrat;
+  font-size: 20px;
+  }
+.Menu ul{
+  padding-inline-start:0;
+  padding: 20px;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 120px;
+  align-items: center;
+}
+
+.Menu a {
+  text-decoration: none;
+  color: black;
+}
+a.Active{
+  color:white;
+}

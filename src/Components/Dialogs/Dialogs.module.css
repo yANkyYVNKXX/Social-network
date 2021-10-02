@@ -1,0 +1,9 @@
+.Content {
+  grid-template-areas: 
+  "Us Mes";
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 5fr;
+  grid-gap:40px;
+  font-family: Montserrat;
+}
