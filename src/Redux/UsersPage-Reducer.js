@@ -1,11 +1,10 @@
 import {getUsers} from '../Api'
+import { ButtonDisabledAc, isFetchingAc } from './Utilits-Reducer';
 
 let init = {
     items: [],
     totalCount:0,
     currentPage:1,
-    ButtonDisabled:false,
-    isFetching:false,
     }
 
 
@@ -18,23 +17,11 @@ export default function UsersPageReducer(state = init, action) {
         ...state,
         items:[...action.data.items],
         totalCount:action.data.totalCount,
-        ButtonDisabled:false,
-        isFetching:false
       }
-    case 'FETCHING':
-        return {
-          ...state,
-          isFetching:true,
-        }
     case 'CHANGE-PAGE':
       return {
         ...state,
         currentPage:action.current
-      }
-      case 'BUTTONS-DISABLED':
-      return {
-        ...state,
-        ButtonDisabled:true
       }
     default:
       return state;
@@ -45,18 +32,19 @@ export default function UsersPageReducer(state = init, action) {
 
 const SetStateAc = (data)=> ({type:'SET-STATE',data})
 const ChangePageAc = (current)=>({type:'CHANGE-PAGE',current})
-const ButtonDisabledAc = ()=>({type:'BUTTONS-DISABLED'})
-const isFetchingAc = ()=>({type:'FETCHING'})
 
 
-export const getUsersThunk = (current)=> {
-  return (dispatch)=>{
-    dispatch(ButtonDisabledAc())
-    dispatch(isFetchingAc())
-    getUsers(current)
-    .then(response=>{
+export const getUsersThunk = (current,term)=> {
+  return async (dispatch)=>{
+    dispatch(ButtonDisabledAc(true))
+    dispatch(isFetchingAc(true))
+    const response = await getUsers(current,term)
     dispatch(SetStateAc(response.data))
-    if (current===undefined){}
-    else {
-    dispatch(ChangePageAc(current))
-  }})}}
+    dispatch(ButtonDisabledAc(false))
+    dispatch(isFetchingAc(false))
+    if (current!==undefined){dispatch(ChangePageAc(current))}
+    
+    
+  
+}
+}

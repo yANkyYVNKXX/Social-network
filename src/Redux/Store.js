@@ -5,6 +5,7 @@ import UsersPageReducer from "./UsersPage-Reducer";
 import thunk from "redux-thunk";
 import AuthReducer from "./Auth-Reducer";
 import { reducer } from "redux-form";
+import UtilitsReducer from "./Utilits-Reducer";
 
 let reducers = combineReducers({
     ProfilePage: ProfilePageReducer,
@@ -12,6 +13,7 @@ let reducers = combineReducers({
     UsersPage: UsersPageReducer,
     Auth: AuthReducer,
     form:reducer,
+    Utilits: UtilitsReducer
 })
 
 let store = createStore(reducers,applyMiddleware(thunk));

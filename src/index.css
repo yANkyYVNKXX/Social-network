@@ -29,3 +29,11 @@ code {
 .Wrapper_Content {
     grid-area:cont;
 }
+
+button {
+  padding: 5px;
+  font-family: Montserrat;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: bold;
+}

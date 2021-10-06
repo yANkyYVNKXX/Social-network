@@ -1,0 +1,32 @@
+.aboutMe {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 420px;
+    max-width: 178px;
+    animation: anime .4s ease-in-out;
+    padding: 10% 0 0 10%;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.buttons button {
+    margin-left: 0!important
+}
+
+.aboutMe span {
+    height: 30px;
+}
+
+@keyframes anime {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}

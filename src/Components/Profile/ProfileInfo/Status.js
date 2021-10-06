@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { sendStatus } from '../../../Api';
 import { sendStatusThunk } from '../../../Redux/ProfilePage-Reducer';
+import style from './Status.module.css'
 
-const Status = React.memo( (props)=> {
+
+const Status = React.memo( ({userId,status, sendStatus, isOwner})=> {
   const [ChangeOfStatus, setStatus] = useState(false)
-  const [StatusText, setStatusText] = useState(props.status)
+  const [StatusText, setStatusText] = useState(status)
 
 
   const StatusActive = ()=>{
@@ -14,25 +15,26 @@ const Status = React.memo( (props)=> {
   }
   
   useEffect(()=>{
-    setStatusText(props.status)
-  },[props.status])
+    setStatusText(status)
+  },[status])
 
   const StatusDisabled = ()=>{
     setStatus(false)
-    props.sendStatus(StatusText,props.userId)
+    sendStatus(StatusText,userId)
     
   }
 
   const ChangeStatus = (event) => {
+    if (event.target.value.length < 30) {
    setStatusText(event.target.value)
+  }
   }
 
   return (
-<div>
-<span>Status:</span>
-{!ChangeOfStatus ?<span onDoubleClick={StatusActive}>{props.status?props.status:<span>-----</span>}</span>:
-              <input onChange={ChangeStatus} onBlur={StatusDisabled} autoFocus={true} value={StatusText}></input>}
-  
+<div className={style.status}>
+{isOwner ? !ChangeOfStatus ?<span onDoubleClick={StatusActive}>{status?status:<span>-----</span>}</span>:
+              <input onChange={ChangeStatus} onBlur={StatusDisabled} autoFocus={true} value={StatusText}></input>:status?status:<span>-----</span>}
+              {isOwner && <p>(double click to update status)</p>}
 </div>
   )
 }

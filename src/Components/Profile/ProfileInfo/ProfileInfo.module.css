@@ -1,25 +1,39 @@
 
   .Profile {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
   }
 
   .Profile .Avatar img {
-    width: 200px;
+    max-width: 200px;
     height: 200px;
     border-radius: 30px;
+    
+  }
+  .Profile .Avatar {
+    text-align: center;
   }
 
-  .Profile .Questionnaire ul {
-    display: flex;
-    flex-direction: column;
-  }
 
-  .Profile .Questionnaire ul li {
-    display: flex;
-    flex-direction:row;
-  }
+.svg {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.svg path{
+  fill:#000;
+}
+.svg:hover path{
+  fill:#5d8aa8;
+}
 
-  .Profile .Questionnaire ul li p:first-child {
-    font-weight: bold;
-  }
+.ImageSettings {
+  max-width: 250px;
+  position: relative;
+  margin: 0 auto;
+  z-index: 1;
+}
+
+.AboutMe .editButton {
+ margin-left: 10%;
+}

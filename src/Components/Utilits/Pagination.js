@@ -34,12 +34,12 @@ let Pagination = (props) => {
     }}
 
     const onClickChangePage = (current) =>{
-      props.getUsers(current)
+      props.getUsers(current, props.term)
     }
      
     return (
               <div>
-                {(startPage!=1) && <button onClick={()=>Prev()}>Prev</button>}
+                {(startPage!=1) && <button className={style.Prev} onClick={()=>Prev()}>Prev</button>}
                 <span>{pages.filter(p => p<=MaxPagesLength)
                             .map(p => <button key={p} disabled={props.ButtonDisabled} onClick={()=>onClickChangePage(p)} 
               className={props.CurrentPage === p ? style.ActivePage:style.margin}>{p}</button>)}
@@ -56,14 +56,14 @@ let MapStateToProps = (state)=>{
     return {
       TotalUsers:state.UsersPage.totalCount,
       CurrentPage:state.UsersPage.currentPage,
-      ButtonDisabled:state.UsersPage.ButtonDisabled,
+      ButtonDisabled:state.Utilits.ButtonDisabled,
     }
 }
 
 let MapDispatchToProps = (dispatch)=>{
 
   return {
-    getUsers:(current)=> dispatch(getUsersThunk(current))
+    getUsers:(current, term)=> dispatch(getUsersThunk(current, term))
 }
 }
 export default connect(MapStateToProps,MapDispatchToProps)(Pagination);

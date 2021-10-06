@@ -1,0 +1,34 @@
+.status{
+  margin-top: 20px;
+}
+
+.status p {
+  margin: 0;
+  font-size: 10px;
+  font-weight: bold;
+  padding-top: 5px;
+}
+
+.status input {
+  padding: 5px;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    transition: .3s border-color;
+    animation: anime .4s ease-in-out;
+}
+
+
+
+@keyframes anime {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.status span{
+  animation: anime .4s ease-in-out;
+
+}

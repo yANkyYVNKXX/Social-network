@@ -1,0 +1,20 @@
+.login {
+    display: flex;
+    flex-direction: column;
+    height: 180px;
+    justify-content: space-around;
+    width: 180px;
+}
+
+.loginWcaptcha {
+    height:300px;
+}
+
+.captcha img {
+    max-width: 100px;
+    max-height: 50px;
+}
+
+.error {
+    color: #FF0000;
+}

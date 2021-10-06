@@ -16,7 +16,7 @@ import { isAuthAc } from '../../Redux/Auth-Reducer';
       <div className={style.Logo}>
         <img src={logo}></img>
       </div>
-      {props.isAuth?<div>{props.UserName}<button onClick={logout}>logout</button></div>
+      {props.isAuth?<div><span>{props.UserName}</span><button onClick={logout}>logout</button></div>
       :<NavLink to='/login'><button>Login</button></NavLink>}
     </nav>
   );

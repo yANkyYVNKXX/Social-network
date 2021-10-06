@@ -4,7 +4,7 @@ import ProfileInfo from './ProfileInfo/ProfileInfo';
 import MyPosts from './MyPosts/MyPosts';
 import { connect } from 'react-redux';
 import { withRouter} from 'react-router-dom';
-import { getProfileThunk, getStatusThunk } from '../../Redux/ProfilePage-Reducer';
+import { getProfileThunk, getStatusThunk, updProfileThunk } from '../../Redux/ProfilePage-Reducer';
 import { compose } from 'redux';
 import WithAuthRedirect from '../../hoc/WithAuthRedirect';
 
@@ -30,7 +30,7 @@ class Profile extends React.Component {
   render (){
     return(
     <div className={style.Content}>
-      <ProfileInfo profile={this.props.profile}/>
+      <ProfileInfo userId={this.props.userId} profile={this.props.profile} updProfile={this.props.updProfile} isFetching={this.props.isFetching}/>
       <MyPosts />
     </div>
     )
@@ -40,7 +40,8 @@ class Profile extends React.Component {
 let MapDispatchToProps = (dispatch)=>{
 return {
   setStateProfile:user=>dispatch(getProfileThunk(user)),
-  getStatus:user=>dispatch(getStatusThunk(user))
+  getStatus:user=>dispatch(getStatusThunk(user)),
+  updProfile:(data,user)=>dispatch(updProfileThunk(data,user))
 }
 
 }
@@ -48,7 +49,8 @@ let MapStateToProps = (state)=>{
   return {
     profile: state.ProfilePage.profile,
     Status: state.ProfilePage.status,
-    isAuth:state.Auth.isAuth
+    isFetching: state.Utilits.isFetching,
+    userId: state.Auth.id
   }
 }
 

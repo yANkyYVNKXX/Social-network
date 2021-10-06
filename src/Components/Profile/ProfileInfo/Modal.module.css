@@ -1,0 +1,54 @@
+.Modal {
+  top: 0;
+  left: 0;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color:rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: 0.5;
+  visibility: hidden;
+  z-index: 2;
+}
+.ModalContent {
+  border-radius: 10px;
+  background-color: white;
+  padding: 20px;
+  transition: 0.5s;
+  transform: scale(0);
+  width: 300px;
+}
+.ModalActive {
+  opacity: 1;
+  visibility: visible;
+  
+}
+.ModalContentActive {
+  transform: scale(1);
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+.content input {
+  margin-bottom: 15px;
+}
+
+.content span {
+  color:#FF0000;
+}

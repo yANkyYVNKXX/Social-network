@@ -39,7 +39,6 @@ export default function DialogPageReducer(state = init, action) {
         alert('Откройте диалог')
       }
       else {
-        console.log(state.textMessage)
         let dialogId = state.dialogs.findIndex(item => item.id === state.activeDialog.id);
         let newMessage = { id: 1, text: state.textMessage };
         let copystate = Object.assign({}, state)
