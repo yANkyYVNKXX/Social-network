@@ -12,14 +12,15 @@
   transition: 0.5;
   visibility: hidden;
   z-index: 2;
+  
 }
 .ModalContent {
   border-radius: 10px;
-  background-color: white;
   padding: 20px;
   transition: 0.5s;
   transform: scale(0);
   width: 300px;
+  background-color: #F0F2F5;
 }
 .ModalActive {
   opacity: 1;
@@ -46,9 +47,10 @@
 }
 
 .content input {
-  margin-bottom: 15px;
+  margin: 0 auto;
 }
 
 .content span {
   color:#FF0000;
+  margin-top: 15px;
 }

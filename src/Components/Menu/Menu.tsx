@@ -1,15 +1,22 @@
+import { FC } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { AppState } from '../../Redux/Store';
 import style from './Menu.module.css'
 
 
- let Menu = (props) => {
+
+type MapStateToPropsType = {
+  UserId: number | null
+}
+
+ const Menu: FC<MapStateToPropsType>= ({UserId}) => {
 
   return (
     <div className={style.Menu}>
       <ul>
       <li>
-          <NavLink to={'/profile/' + props.UserId} activeClassName={style.Active}>Profile</NavLink>
+          <NavLink to={'/profile/' + UserId} activeClassName={style.Active}>Profile</NavLink>
         </li>
         <li>
           <NavLink to='/dialogs' activeClassName={style.Active}>Messages</NavLink>
@@ -28,18 +35,11 @@ import style from './Menu.module.css'
   );
 }
 
-const MapStateToProps = (state)=>{
+const MapStateToProps = (state:AppState):MapStateToPropsType=>{
   return {
     UserId: state.Auth.id
   }
 }
 
-const MapDispatchToProps = (dispatch)=> {
-  return {
+export default connect<MapStateToPropsType, {}, {},AppState>(MapStateToProps,{})(Menu)
 
-  }
-}
-
-Menu = connect(MapStateToProps,MapDispatchToProps)(Menu)
-
-export default Menu

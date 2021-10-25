@@ -1,8 +1,14 @@
-
-  .Profile {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-  }
+.Profile {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  column-gap: 100px;
+  align-items: start;
+  padding-left: 100px;
+  row-gap: 50px;
+  padding-right: 100px;
+  height: 310px;
+}
 
   .Profile .Avatar img {
     max-width: 200px;
@@ -28,12 +34,13 @@
 }
 
 .ImageSettings {
-  max-width: 250px;
+  width: 250px;
   position: relative;
   margin: 0 auto;
   z-index: 1;
 }
 
-.AboutMe .editButton {
- margin-left: 10%;
+.AboutMe {
+  padding-top: 50px;
+  align-self: flex-start;
 }

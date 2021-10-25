@@ -1,12 +1,22 @@
 import style from './ProfileInfo.module.css'
 import Ava from '../Img/Avatar.jpg'
-import React, { useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import Status from './Status';
 import AboutMe from './AboutMe';
 import EditAboutMe from './EditAboutMe';
 import Modal from './Modal';
+import { profile, profileUPD } from '../../../Types/Types';
+import { response } from '../../../Api';
 
-export default function ProfileInfo({ profile, updProfile, isFetching, userId}) {
+type CustomProps = {
+
+  profile:profile
+  updProfile: (data:profileUPD, userId:number | null)=> any
+  isFetching: boolean
+  userId: number | null
+}
+
+ const ProfileInfo:FC<CustomProps> = ({ profile, updProfile, isFetching, userId})=> {
 
   const [editMod, updEditMode] = useState(false)
   const [modal, updModal] = useState(false)
@@ -22,22 +32,26 @@ export default function ProfileInfo({ profile, updProfile, isFetching, userId}) 
           else updOwner(false)
   },[profile.userId])
 
-  const saveAboutMe = (data) => {
+  const saveAboutMe = (data:any) => {
     updProfile(data, profile.userId)
-    .then(response=>{
-     if (response.data.resultCode == 0)
+    .then((data:response)=>{
+     if (data.resultCode == 0)
      {
       updEditMode(false)
      }
     })
-    .catch(error=>{
+    .catch((error:any)=>{
         alert (error.response) 
     })
   }
 
   return (
-    <div className={style.Profile}>
+    
+   <div>
      <Modal modal={modal} updModal={updModal}/>
+    <div className={style.Profile}>
+     
+  
       <div className={style.Avatar}>
         <h2>{profile.fullName}</h2>
         <div className={style.ImageSettings}>
@@ -55,6 +69,9 @@ export default function ProfileInfo({ profile, updProfile, isFetching, userId}) 
         {!editMod && isOwner && <button className={style.editButton} onClick={editModeActive}>Edit profile</button>}
       </div>
     </div>
+    </div>
   )
 }
+
+export default ProfileInfo
 

@@ -16,6 +16,7 @@
 
 .AboutMe {
     animation: anime .4s ease-in-out;
+    max-width: 200px;
 }
 
 @keyframes anime {
@@ -25,8 +26,4 @@
     to {
         opacity: 1;
     }
-}
-
-.AboutMe {
-    padding: 10% 0 0 10%;
 }

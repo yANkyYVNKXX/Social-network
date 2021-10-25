@@ -1,9 +1,13 @@
-import React from 'react';
-import { Field, reduxForm } from 'redux-form';
+import React, { FC } from 'react';
+import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 import { renderField } from '../Utilits/renderField';
 import style from './Search.module.css'
 
-let Search = ({handleSubmit}) => {
+type SearchValue = {
+  term:string
+}
+
+let Search:FC<InjectedFormProps<SearchValue>> = ({handleSubmit}) => {
 
      
     return (
@@ -17,6 +21,6 @@ let Search = ({handleSubmit}) => {
 
         }
 
-  export default reduxForm ({form:'search'})(Search)
+  export default reduxForm<SearchValue,unknown>({form:'search'})(Search)
 
    

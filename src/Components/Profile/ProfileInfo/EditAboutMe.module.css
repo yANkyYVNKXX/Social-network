@@ -2,10 +2,8 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    height: 420px;
     max-width: 178px;
     animation: anime .4s ease-in-out;
-    padding: 10% 0 0 10%;
 }
 
 .buttons {
@@ -29,4 +27,14 @@
     to {
         transform: scale(1);
     }
+}
+
+.LookingForAjob {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.LookingForAjob input {
+    vertical-align: bottom;
 }
